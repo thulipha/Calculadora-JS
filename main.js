@@ -1,6 +1,6 @@
 //Referencias de variáveis do html.
 
-const $tela = document.querySelector(".visor");
+const $tela = document.querySelector(".visor"); 
 
 const $numeros = document.querySelectorAll('[data-js="buttonsNumbers"]');
 
