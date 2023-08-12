@@ -1,12 +1,13 @@
-//Referencias de variáveis do html.
-
 const $tela = document.querySelector(".visor"); 
 const $numeros = document.querySelectorAll('[data-js="buttonsNumbers"]');
 const $operadores = document.querySelectorAll('[data-js="buttonsOperations"]');
 
 
-//Ação dos botões do html.
 function inicializar(){
+  iniciarEventos();
+};
+
+function iniciarEventos(){
   $numeros.forEach((num)=>{
     num.addEventListener('click',adicionarNumero);
   });
@@ -15,13 +16,9 @@ function inicializar(){
   });
 };
 
-
-//Definição de Funções do JavaScript.
-
 function adicionarNumero(){
     return $tela.value += this.value;
 };
-
 
 function funcoesDosOperadores(){
   
@@ -38,7 +35,6 @@ function funcoesDosOperadores(){
   return $tela.value += this.value;
 };
 
-
 function ultimoItemEhUmOperador(){
   
   const operadores = ['+','-','÷','×'];
@@ -49,12 +45,9 @@ function ultimoItemEhUmOperador(){
   });
 };
 
-
 function limparTela(){
-  
   return $tela.value = 0;
 };
-
 
 function removerItemSeForUmOperador(){
   
@@ -62,7 +55,6 @@ function removerItemSeForUmOperador(){
       $tela.value = $tela.value.slice(0,-1);
     };
 };
-
 
 function calcular(){
   
@@ -75,15 +67,14 @@ function calcular(){
      let primeiroValor = acumulado.slice(0, -1);
      let operadorAtual = acumulado.split('').pop();
      let valorAtual = atual;
+     
      return calculos(operadorAtual, primeiroValor, valorAtual);
-     
-     
   });
 };
 
 function calculos(operadorAtual, primeiroValor, valorAtual){
+  
   switch(operadorAtual){
-       
        case '+':
          return $tela.value = Number(primeiroValor) + Number(valorAtual);
          
