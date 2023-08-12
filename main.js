@@ -1,27 +1,24 @@
 //Referencias de variáveis do html.
 
 const $tela = document.querySelector(".visor"); 
-
 const $numeros = document.querySelectorAll('[data-js="buttonsNumbers"]');
-
 const $operadores = document.querySelectorAll('[data-js="buttonsOperations"]');
 
 
 //Ação dos botões do html.
-
-$numeros.forEach((num)=>{
-  num.addEventListener('click',adicionarNumero);
-});
-
-$operadores.forEach((oper)=>{
-  oper.addEventListener('click', funcoesDosOperadores);
-});
+function inicializar(){
+  $numeros.forEach((num)=>{
+    num.addEventListener('click',adicionarNumero);
+  });
+  $operadores.forEach((oper)=>{
+    oper.addEventListener('click', funcoesDosOperadores);
+  });
+};
 
 
 //Definição de Funções do JavaScript.
 
 function adicionarNumero(){
-  
     return $tela.value += this.value;
 };
 
@@ -78,8 +75,14 @@ function calcular(){
      let primeiroValor = acumulado.slice(0, -1);
      let operadorAtual = acumulado.split('').pop();
      let valorAtual = atual;
+     return calculos(operadorAtual, primeiroValor, valorAtual);
      
-     switch(operadorAtual){
+     
+  });
+};
+
+function calculos(operadorAtual, primeiroValor, valorAtual){
+  switch(operadorAtual){
        
        case '+':
          return $tela.value = Number(primeiroValor) + Number(valorAtual);
@@ -93,5 +96,6 @@ function calcular(){
        case '÷':
          return $tela.value = Number(primeiroValor) / Number(valorAtual);
      };
-  });
 };
+
+inicializar();
