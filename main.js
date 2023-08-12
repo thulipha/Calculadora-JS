@@ -62,11 +62,10 @@ function calcular(){
   
   let todosOsValores = $tela.value.match(/\d+[+÷×-]?/g);
   
-  let resultado = todosOsValores.reduce(function (acumulado, atual){
+  let resultado = todosOsValores.reduce(function (acumulado, valorAtual){
     
      let primeiroValor = acumulado.slice(0, -1);
      let operadorAtual = acumulado.split('').pop();
-     let valorAtual = atual;
      
      return calculos(operadorAtual, primeiroValor, valorAtual);
   });
